@@ -10,5 +10,4 @@ add spacemacs_template /root/.spacemacs
 env SHELL=/bin/bash
 run emacs --batch /dev/null --load /root/.emacs.d/init.el
 run chmod +x /root/.xinitrc
-run mkdir -p /root/.config/i3
 cmd x11vnc -create -nopw -forever -noxdamage -nowf
