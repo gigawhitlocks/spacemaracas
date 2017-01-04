@@ -38,4 +38,4 @@ workdir /home/"$USER"
 
 add xorg.conf /etc/X11/xorg.conf
 # start x11vnc + xorg
-cmd x11vnc -create -nopw -forever -noxdamage -nowf
+cmd x11vnc -create -nopw -forever -noxdamage -nowf -input KMBCF
