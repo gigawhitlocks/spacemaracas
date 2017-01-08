@@ -38,4 +38,5 @@ workdir /home/"$USER"
 
 add xorg.conf /etc/X11/xorg.conf
 # start x11vnc + xorg
+env X11VNC_CREATE_GEOM=1920x1080
 cmd x11vnc -create -nopw -forever -noxdamage -nowf -input KMBCF
