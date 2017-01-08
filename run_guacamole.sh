@@ -15,14 +15,9 @@ docker run -e PGPASSWORD=mysecretpassword -v $(pwd):/tmp --rm --link guac-postgr
 
 docker run -e PGPASSWORD=mysecretpassword --rm --link guac-postgres:postgres postgres\
        psql -h postgres -U postgres -d "guacamole_db" -c \
-       "CREATE USER guacamole_user WITH PASSWORD 'some_password';"
-
-docker run -e PGPASSWORD=mysecretpassword --rm --link guac-postgres:postgres postgres\
-       psql -h postgres -U postgres -d "guacamole_db" -c \
-       "GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA public TO guacamole_user;"
-docker run -e PGPASSWORD=mysecretpassword --rm --link guac-postgres:postgres postgres\
-       psql -h postgres -U postgres -d "guacamole_db" -c \
-       "GRANT SELECT,USAGE ON ALL SEQUENCES IN SCHEMA public TO guacamole_user;"
+       "CREATE USER guacamole_user WITH PASSWORD 'some_password';
+       GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA public TO guacamole_user;
+       GRANT SELECT,USAGE ON ALL SEQUENCES IN SCHEMA public TO guacamole_user;"
 
 docker run --name some-guacamole --link some-guacd:guacd \
        --link guac-postgres:postgres      \
