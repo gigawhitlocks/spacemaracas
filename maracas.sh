@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-#docker build . -t emacs
-#docker run -d --name some-emacs emacs -p 5900:5900
+docker build -t emacs .
+docker run -d --name some-emacs -p 5900:5900 emacs
 
-docker run --name some-guacd -d -p 4822:4822 guacamole/guacd
+docker run --name some-guacd -d -p 4822:4822 --link some-emacs:emacs guacamole/guacd
 docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgres > initdb.sql
 
 echo starting postgres
@@ -23,10 +23,10 @@ docker run -e PGPASSWORD=mysecretpassword --rm --link guac-postgres:postgres pos
        GRANT SELECT,INSERT,UPDATE,DELETE ON ALL TABLES IN SCHEMA public TO guacamole_user;
        GRANT SELECT,USAGE ON ALL SEQUENCES IN SCHEMA public TO guacamole_user;"
 
-docker build -t guacamole ./guacamole
 docker run --name some-guacamole --link some-guacd:guacd \
        --link guac-postgres:postgres      \
+       --link some-emacs:emacs \
        -e POSTGRES_DATABASE=guacamole_db  \
        -e POSTGRES_USER=guacamole_user    \
        -e POSTGRES_PASSWORD=some_password \
-       -d -p 8080:8080 guacamole
+       -d -p 8080:8080 guacamole/guacamole:latest
