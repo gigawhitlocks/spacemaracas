@@ -1,16 +1,20 @@
-from java
-run mkdir /opt/guacamole
-workdir /opt/guacamole
-run apt-get update -yq && apt-get upgrade -yq &&\
-    apt-get install -yq maven git
-run git clone git://github.com/apache/incubator-guacamole-client.git
-workdir /opt/guacamole/incubator-guacamole-client
-run mvn package
+# from guacamole/guacamole:latest
 
-# add guacamole-auth-noauth-0.9.10-incubating/guacamole-auth-noauth-0.9.10-incubating.jar /opt/guacamole/extensions
-# add guacamole-auth-noauth-0.9.10-incubating/doc/example/noauth-config.xml /opt/guacamole/noauth-config.xml
-# run echo "noauth-config: /opt/guacamole/noauth-config.xml" >> guacamole.properties &&\
-#     sed -i "s/rdp/vnc/g" noauth-config.xml &&\
-#     sed -i "s/name=\"port\" value=\"3389\"/name=\"port\" value=\"5900\"/g" noauth-config.xml
-workdir /usr/local/tomcat
-cmd /opt/guacamole/bin/start.sh
+from tomcat:jre8
+run apt-get -yq update && apt-get -yq upgrade
+run apt-get install -yq openjdk-8-jdk-headless maven git
+run git clone git://github.com/apache/incubator-guacamole-client.git
+workdir incubator-guacamole-client
+run mvn package &&\
+  mv guacamole/target/guacamole-0.9.11-incubating.war /usr/local/tomcat/webapps/guacamole.war
+
+
+env GUACAMOLE_HOME=/root/.guacamole
+run mkdir -p /root/.guacamole/extensions &&\
+  mv ./extensions/guacamole-auth-noauth/target/guacamole-auth-noauth-0.9.11-incubating.jar /root/.guacamole/extensions
+add noauth-config.xml /root/.guacamole/noauth-config.xml
+add logback.xml /root/.guacamole/logback.xml
+run echo "noauth-config: /root/.guacamole/noauth-config.xml" >> /root/.guacamole/guacamole.properties
+
+add start.sh .
+cmd /bin/bash ./start.sh
