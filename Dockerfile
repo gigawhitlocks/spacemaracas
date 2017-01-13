@@ -22,7 +22,7 @@ user "$USER"
 workdir /home/"$USER"
 
 # set up spacemacs
-env SHELL=/usr/bin/zsh
+env SHELL=/bin/bash
 add spacemacs_template /home/"$USER"/.spacemacs
 run git clone https://github.com/syl20bnr/spacemacs /home/"$USER"/.emacs.d &&\
     emacs --batch /dev/null --load /home/"$USER"/.emacs.d/init.el # this preloads emacs stuff
