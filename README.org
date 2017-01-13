@@ -5,7 +5,7 @@
     - Building, running, and viewing in the browser looks something like this:
 
 #+DOWNLOADED: file:///home/ian/emacs_gifs/maracas.gif @ 2017-01-12 15:43:42
-[[file:maracas_2017-01-12_15-43-42.gif]]
+[[file:local/maracas_2017-01-12_15-43-42.gif]]
 
   - Why?
     - I don't really know
