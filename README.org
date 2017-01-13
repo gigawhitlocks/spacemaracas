@@ -1,0 +1,20 @@
+- Spacemaracas
+  - What is this?
+    - These are some scripts and Dockerfiles for building emacs as a service, running in containers, accessible via a browser or a VNC client
+    - We actually run a container and run X11, so really any Linux application would work through this with minimal modification
+    - Building, running, and viewing in the browser looks something like this:
+
+#+DOWNLOADED: file:///home/ian/emacs_gifs/maracas.gif @ 2017-01-12 15:43:42
+[[file:maracas_2017-01-12_15-43-42.gif]]
+
+  - Why?
+    - I don't really know
+
+  - How?
+    - Clone this repo.
+    - ~./build.sh~
+    - ~./maracas.sh~
+    - Visit ~localhost:8080/guacamole~ in the browser or ~localhost:5900~ with a VNC viewer (e.g. Remmina)
+
+  - Cleanup?
+    - ~./clean.sh~
