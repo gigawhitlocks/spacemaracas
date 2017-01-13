@@ -5,6 +5,7 @@ Spacemaracas - the beginnings of a vnc emacs thing with lazy documentation
 
 Usage:
 $0 run -- just run the thing. Will pull images if they are not built.
+$0 stop -- stop the running application
 $0 build -- Build images from source (more recent, less stable)
 $0 clean -- Delete the Docker containers left around after running
 $0 help -- Display this help screen
@@ -25,7 +26,9 @@ do
                 ;;
         run) ./run.sh
                 ;;
-        clean) ./clean.sh
+        stop) ./clean.sh
+                ;;
+        publish) ./publish.sh
              ;;
         *) echo "$usage"
            ;;

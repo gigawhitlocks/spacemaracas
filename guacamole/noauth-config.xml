@@ -1,6 +1,0 @@
-<configs>
-  <config name='emacs' protocol='vnc'>
-    <param name='hostname' value='emacs' />
-    <param name='port' value='5900' />
-  </config>
-</configs>

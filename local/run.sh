@@ -6,10 +6,10 @@ IFS=$'\n\t'
 # docker build -t emacs .
 
 echo "Running emacs container"
-docker run -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
+docker run --rm -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
 
 echo "Running guacd"
-docker run --name some-guacd -d -p 4822:4822 --link some-emacs:emacs guacamole/guacd:latest
+docker run --rm --name some-guacd -d -p 4822:4822 --link some-emacs:emacs guacamole/guacd:latest
 
 # echo "Generate SQL init script"
 # docker run guacamole/guacamole:latest /opt/guacamole/bin/initdb.sh --postgres > initdb.sql
@@ -43,7 +43,7 @@ echo "Run guacamole"
            #        -e POSTGRES_USER=guacamole_user    \
            #        -e POSTGRES_PASSWORD=some_password \
 
-docker run --name some-guacamole\
+docker run --rm --name some-guacamole\
        --link some-guacd:guacd \
        --link some-emacs:emacs \
        -d -p 8080:8080 gigawhitlocks/guac:latest
