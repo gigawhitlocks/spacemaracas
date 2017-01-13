@@ -17,6 +17,3 @@
     - ~./maracas build~ to build a customized or unstable version
     - ~./maracas stop~ to destroy the environment when you're done
     - Visit ~http:/localhost:8080/guacamole~ in the browser or ~localhost:5900~ with a VNC viewer (e.g. Remmina)
-
-  - Cleanup?
-    - ~./clean.sh~

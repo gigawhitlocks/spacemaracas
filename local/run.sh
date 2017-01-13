@@ -49,4 +49,4 @@ docker run --name some-guacamole\
        -d -p 8080:8080 gigawhitlocks/guac:latest
 
 docker ps
-echo -e "\n\n####\nSuccess!\nOpen to localhost:8080 in a browser or connect a vnc viewer to localhost:5900"
+echo -e "\n\n####\nSuccess!\nOpen to http://localhost:8080 in a browser or connect a vnc viewer to localhost:5900"
