@@ -11,11 +11,12 @@
     - I don't really know
 
   - How?
+    - Install docker.
     - Clone this repo.
     - ~./maracas run~ if you are satisfied with the "stable" dockerhub images
     - ~./maracas build~ to build a customized or unstable version
     - ~./maracas stop~ to destroy the environment when you're done
-    - Visit ~http://localhost:8080/guacamole~ in the browser or ~localhost:5900~ with a VNC viewer (e.g. Remmina)
+    - Visit ~http:/localhost:8080/guacamole~ in the browser or ~localhost:5900~ with a VNC viewer (e.g. Remmina)
 
   - Cleanup?
     - ~./clean.sh~
