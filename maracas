@@ -3,12 +3,23 @@
 usage=$(cat <<EOF
 Spacemaracas - the beginnings of a vnc emacs thing with lazy documentation
 
-Usage:
+Usage: $0 command location
+
+Commands:
 $0 run -- just run the thing. Will pull images if they are not built.
 $0 stop -- stop the running application
 $0 build -- Build images from source (more recent, less stable)
 $0 clean -- Delete the Docker containers left around after running
 $0 help -- Display this help screen
+$0 vnc-only -- only run emacs+vnc. Good for local use where browser functionality not needed. Server/local ignored; stop when done with docker kill
+
+Location:
+server or local
+
+Examples:
+./maracas build local
+./maracas run server
+./maracas vnc-only
 EOF
      )
 
@@ -16,10 +27,8 @@ EOF
 case "$2" in
     server) cd server
             ;;
-    local) cd local
+    *) cd local
            ;;
-    *) echo "$usage"
-       exit 1
 esac
 
 if test $# -eq 0; then
@@ -37,6 +46,7 @@ case "$1" in
     publish) ./publish.sh
              ;;
     vnc-only) docker run -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
+              docker ps
               ;;
     *) echo "$usage"
        exit 1
