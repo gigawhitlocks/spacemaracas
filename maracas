@@ -23,13 +23,15 @@ while test $# -gt 0
 do
     case "$1" in
         build) ./build.sh
-                ;;
+               ;;
         run) ./run.sh
-                ;;
-        stop) ./clean.sh
-                ;;
-        publish) ./publish.sh
              ;;
+        stop) ./clean.sh
+              ;;
+        publish) ./publish.sh
+                 ;;
+        vnc-only) docker run -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
+                  ;;
         *) echo "$usage"
            ;;
     esac
