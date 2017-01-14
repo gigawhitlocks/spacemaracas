@@ -13,29 +13,34 @@ EOF
      )
 
 
-cd local
+case "$2" in
+    server) cd server
+            ;;
+    local) cd local
+           ;;
+    *) echo "$usage"
+       exit 1
+esac
+
 if test $# -eq 0; then
     echo "$usage"
-    exit 0
+    exit 1
 fi
 
-while test $# -gt 0
-do
-    case "$1" in
-        build) ./build.sh
-               ;;
-        run) ./run.sh
-             ;;
-        stop) ./clean.sh
-              ;;
-        publish) ./publish.sh
-                 ;;
-        vnc-only) docker run -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
-                  ;;
-        *) echo "$usage"
+case "$1" in
+    build) ./build.sh
            ;;
-    esac
-    shift
-done
+    run) ./run.sh
+         ;;
+    stop) ./clean.sh
+          ;;
+    publish) ./publish.sh
+             ;;
+    vnc-only) docker run -d --name some-emacs -p 5900:5900 gigawhitlocks/emacs:latest
+              ;;
+    *) echo "$usage"
+       exit 1
+       ;;
+esac
 
 exit 0
