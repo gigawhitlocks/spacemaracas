@@ -37,7 +37,6 @@ run mkdir ~/.fonts &&\
 workdir /home/"$USER"
 
 # start x11vnc + xorg
-
 add xorg.conf /etc/X11/xorg.conf
 env X11VNC_CREATE_GEOM=1920x1080
 cmd x11vnc -create -nopw -forever -noxdamage -nowf -input KMBCF

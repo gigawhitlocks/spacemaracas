@@ -1,2 +1,3 @@
 #!/bin/bash
-docker rm -f some-emacs some-guacamole some-guacd
+docker rm -f emacs guacamole guacd
+docker network rm maracas

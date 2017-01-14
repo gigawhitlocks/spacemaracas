@@ -1,4 +1,4 @@
-- Spacemaracas
+*Spacemaracas*
   - What is this?
     - These are some scripts and Dockerfiles for building emacs as a service, running in containers, accessible via a browser or a VNC client
     - We actually run a container and run X11, so really any Linux application would work through this with minimal modification
