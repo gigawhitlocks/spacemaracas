@@ -1,3 +1,6 @@
 #!/bin/bash
+# mkdir -p ~/.config/autostart &&\
+#    cp /usr/share/applications/emacs24.desktop ~/.config/autostart &&\
+#     chown -R "$USER":"$USER" ~/.config && whoami
 dbus &
-exec emacs
+exec mate-session

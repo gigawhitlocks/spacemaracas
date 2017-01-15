@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Building emacs container"
-docker build -t emacs .
-docker tag emacs gigawhitlocks/emacs:latest
+docker build -t maracas-emacs .
+docker tag maracas-emacs gigawhitlocks/emacs:latest
 
 echo "Build base for custom guacamoles"
 docker build -t guac ../guacamole
