@@ -10,22 +10,22 @@ add xinitrc /root/.xinitrc
 run chmod +x /root/.xinitrc
 
 # create a user
-run useradd "$USER" &&\
-    mkdir -p /home/"$USER" &&\
-    cp /root/.xinitrc /home/"$USER"/.xinitrc &&\
-    chown "$USER":"$USER" /home/"$USER"/.xinitrc &&\
-    chmod +x /home/"$USER"/.xinitrc &&\
-    chown "$USER":"$USER" /home/"$USER"
+run useradd "ian" &&\
+    mkdir -p /home/"ian" &&\
+    cp /root/.xinitrc /home/"ian"/.xinitrc &&\
+    chown "ian":"ian" /home/"ian"/.xinitrc &&\
+    chmod +x /home/"ian"/.xinitrc &&\
+    chown "ian":"ian" /home/"ian"
 
 # switch to user
-user "$USER"
-workdir /home/"$USER"
+user "ian"
+workdir /home/"ian"
 
 # set up spacemacs
 env SHELL=/bin/bash
-add spacemacs_template /home/"$USER"/.spacemacs
-run git clone https://github.com/syl20bnr/spacemacs /home/"$USER"/.emacs.d &&\
-    emacs --batch /dev/null --load /home/"$USER"/.emacs.d/init.el # this preloads emacs stuff
+add spacemacs_template /home/"ian"/.spacemacs
+run git clone https://github.com/syl20bnr/spacemacs /home/"ian"/.emacs.d &&\
+    emacs --batch /dev/null --load /home/"ian"/.emacs.d/init.el # this preloads emacs stuff
 
 # install fonts
 workdir /tmp
@@ -34,7 +34,7 @@ workdir source-code-pro-2.030R-ro-1.050R-it
 run mkdir ~/.fonts &&\
     cp OTF/* ~/.fonts &&\
     fc-cache -v -f
-workdir /home/"$USER"
+workdir /home/"ian"
 
 # start x11vnc + xorg
 add xorg.conf /etc/X11/xorg.conf
